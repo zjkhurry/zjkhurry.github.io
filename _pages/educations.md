@@ -7,8 +7,6 @@ redirect_from:
   - /educations.html
 ---
 
-<span class='anchor' id='about-me'></span>
-
 # 📖 Educations
 - *2020.10 - 2024.10*, Ph.D. **City University of Hong Kong** Biomedical Engineering. 
 - *2016.09 - 2019.07*, M.S. **Tsinghua University** Electronic Engineering.
