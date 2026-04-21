@@ -7,8 +7,6 @@ redirect_from:
   - /honors-and-awards.html
 ---
 
-<span class='anchor' id='about-me'></span>
-
 # 🎖 Honors and Awards
 - *2026.01* Science Fund Program for Excellent Young Scientists (Overseas), NSFC.
 - *2025.03* 2024 Top Ten Chinese Advances in Optics Nomination Award (Basic Research Category)
