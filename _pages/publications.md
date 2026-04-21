@@ -2,10 +2,9 @@
 permalink: /publications/
 title: "Jingkun's Lab"
 excerpt: ""
-author_profile: false
+author_profile: true
 redirect_from: 
-  - /about/
-  - /about.html
+  - /publications.html
 ---
 
 # 📝 Publications 
