@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: ""
+title: "Jingkun's Lab"
 excerpt: ""
 author_profile: true
 redirect_from: 
