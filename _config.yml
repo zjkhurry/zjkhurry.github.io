@@ -21,8 +21,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Jingkun Zhou"
-  avatar           : "images/android-chrome-512x512.png"
+  name             : "Jingkun Zhou (周靖昆)"
+  avatar           : "/images/Jingkun.png"
   bio              : "City University of Hong Kong"
   location         : "Sham Shui Po, Hong Kong"
   employer         :
