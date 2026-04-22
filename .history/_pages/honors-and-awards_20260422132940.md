@@ -2,7 +2,7 @@
 permalink: /honors-and-awards/
 title: "Jingkun's Lab"
 excerpt: ""
-author_profile: false
+author_profile: true
 redirect_from: 
   - /honors-and-awards.html
 ---
