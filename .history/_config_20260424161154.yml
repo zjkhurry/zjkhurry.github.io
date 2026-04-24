@@ -21,10 +21,10 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Jingkun Zhou <br> (周靖昆)"
+  name             : "Jingkun Zhou <> (周靖昆)"
   avatar           : "/images/Jingkun.png"
   bio              : "City University of Hong Kong"
-  location         : "Sham Shui Po, <br>    Hong Kong"
+  location         : "Sham Shui Po, Hong Kong"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=2NT0I8wAAAAJ"

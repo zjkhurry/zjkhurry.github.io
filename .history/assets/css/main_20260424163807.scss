@@ -1,0 +1,115 @@
+---
+---
+
+/*
+ *    Minimal Mistakes Jekyll Theme
+ *
+ *  - Michael Rose
+ *  - mademistakes.com
+ *  - https://twitter.com/mmistakes
+ *
+*/
+
+@import "vendor/breakpoint/breakpoint"; // media query mixins
+@import "variables";
+@import "mixins";
+@import "vendor/susy/susy";
+
+@import "reset";
+@import "base";
+
+@import "utilities";
+@import "animations";
+@import "tables";
+@import "buttons";
+@import "notices";
+@import "masthead";
+@import "navigation";
+@import "footer";
+@import "syntax";
+
+@import "forms";
+
+@import "page";
+@import "archive";
+@import "sidebar";
+
+@import "vendor/font-awesome/fontawesome";
+@import "vendor/font-awesome/solid";
+@import "vendor/font-awesome/brands";
+@import "vendor/magnific-popup/magnific-popup";
+@import "print";
+
+.paper-box {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px #efefef solid;
+    padding: 2em 0 2em 0;
+    
+
+    .paper-box-image{
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        order: 2;
+        img {
+            max-width: 400px;
+            box-shadow: 3px 3px 6px #888;
+            object-fit: cover;
+        }
+    }
+    
+    .paper-box-text{
+        max-width: 100%;
+        order: 1;
+    }
+    
+    @include breakpoint($medium) {
+        .paper-box-image{
+            justify-content: left;
+            min-width: 200px;
+            max-width: 40%;
+            order: 1;
+        }
+        
+        .paper-box-text{
+            justify-content: left;
+            padding-left: 2em;
+            max-width: 60%;
+            order: 2;
+        }
+
+    }
+
+
+}
+
+$scroll_offset : 2em;
+h1:before, .anchor:before { 
+    content: ''; 
+    display: block; 
+    position: relative; 
+    width: 0; 
+    height: $scroll_offset; 
+    margin-top: -$scroll_offset;
+}
+
+.badge {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: absolute;
+    margin-top: .5em;
+    margin-left: -.5em;
+    color: white;
+    background-color: #00369f;
+    font-size: .8em;
+}
+
+body {
+  background: linear-gradient(120deg, #f8fafc 0%, #f1f5f9 100%);
+  /* 或使用 subtle SVG pattern */
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.1'%3E%3C!-- 芯片主体 --%3E%3Crect x='10' y='10' width='20' height='20' rx='2'/%3E%3Crect x='50' y='50' width='20' height='20' rx='2'/%3E%3C!-- 晶体管 --%3E%3Ccircle cx='15' cy='45' r='3'/%3E%3Ccircle cx='65' cy='25' r='3'/%3E%3C!-- 电路连线 --%3E%3Cpath d='M20 30 L30 40 L40 30 L50 40' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 20 L40 10 L50 20 L60 10' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3C!-- 集成电路细节 --%3E%3Crect x='35' y='55' width='10' height='10' rx='1'/%3E%3Crect x='55' y='15' width='8' height='8' rx='1'/%3E%3Cpath d='M10 20 L5 20 L5 25' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 10 L30 5 L35 5' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M50 70 L50 75 L55 75' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M70 50 L75 50 L75 55' stroke='%23e2e8f0' stroke-opacity='0.1' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

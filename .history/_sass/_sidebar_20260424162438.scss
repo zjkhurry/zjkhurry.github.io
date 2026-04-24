@@ -25,6 +25,7 @@
     opacity: 1;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
+    padding-right: 40;
 
     &:hover {
       opacity: 1;
@@ -33,7 +34,7 @@
 
 
   @include breakpoint($x-large) {
-    padding-right: 40;
+    padding-right: 0;
   }
 
   h2, h3, h4, h5, h6 {

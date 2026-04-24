@@ -10,13 +10,6 @@
   -webkit-transform: translate3d(0, 0 , 0);
           transform: translate3d(0, 0 , 0);
 
-  
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-
-
   @include clearfix();
   margin-bottom: 1em;
 
@@ -33,7 +26,7 @@
 
 
   @include breakpoint($x-large) {
-    padding-right: 40;
+    padding-right: 0;
   }
 
   h2, h3, h4, h5, h6 {
@@ -105,12 +98,12 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
 
     @include breakpoint($large) {
-      padding: 2px;
+      padding: 5px;
       border: 1px solid $border-color;
     }
   }
 }
-.author__avatar:hover {
+.profile-avatar:hover {
   transform: translateY(-4px);
 }
 
@@ -132,7 +125,6 @@
 
 .author__name {
   margin: 0;
-  text-align: center; 
 
   @include breakpoint($large) {
     margin-top: 10px;
