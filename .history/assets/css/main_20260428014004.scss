@@ -167,3 +167,77 @@ body {
     z-index: 10;
     transform: translate(-50%, -50%);
 }
+
+.word-cloud-item:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+    color: white;
+    border-color: rgba(102, 126, 234, 0.6);
+    z-index: 100 !important;
+}
+
+.word-cloud-item.level-1 {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    color: #333;
+    box-shadow: 0 4px 12px rgba(132, 251, 176, 0.3);
+    border-color: rgba(132, 251, 176, 0.2);
+    opacity: 0.5;
+}
+
+.word-cloud-item.level-1:hover {
+    background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(132, 251, 176, 0.5);
+    border-color: rgba(132, 251, 176, 0.5);
+    opacity: 1;
+}
+
+.word-cloud-item.level-3 {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: #333;
+    box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+    border-color: rgba(250, 112, 154, 0.2);
+    opacity: 0.7;
+}
+
+.word-cloud-item.level-3:hover {
+    background: linear-gradient(135deg, #fee140 0%, #fa709a 100%);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(250, 112, 154, 0.5);
+    border-color: rgba(250, 112, 154, 0.5);
+    opacity: 1;
+}
+
+.word-cloud-item.level-4 {
+    background: linear-gradient(135deg, #ff4b1f 0%, #ff9068 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 75, 31, 0.3);
+    border-color: rgba(255, 75, 31, 0.2);
+    opacity: 0.85;
+}
+
+.word-cloud-item.level-4:hover {
+    background: linear-gradient(135deg, #ff9068 0%, #ff4b1f 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 75, 31, 0.5);
+    border-color: rgba(255, 75, 31, 0.5);
+    opacity: 1;
+}
+
+.word-cloud-item.level-5 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    border-color: rgba(102, 126, 234, 0.3);
+    opacity: 1;
+}
+
+.word-cloud-item.level-5:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+    border-color: rgba(102, 126, 234, 0.6);
+    opacity: 1;
+}
