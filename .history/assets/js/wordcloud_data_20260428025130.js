@@ -57,7 +57,7 @@ function initWordCloud() {
         weightFactor: 10,
         effect: 'linerMap',
         tooltip: {
-            show: true,
+            show: false,
             formatter: function(item) {
                 return '<div>' + item[0] + '</div>'
             }
@@ -69,7 +69,7 @@ function initWordCloud() {
         ],
         autoFontSize: true,
         cursorWhenHover: 'pointer'
-    };
+    });
 
     // 初始化词云
     wordCloud = new B2wordcloud(container, wordCloudConfig);

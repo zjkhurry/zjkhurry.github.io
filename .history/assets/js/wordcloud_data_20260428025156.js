@@ -57,7 +57,7 @@ function initWordCloud() {
         weightFactor: 10,
         effect: 'linerMap',
         tooltip: {
-            show: true,
+            show: false,
             formatter: function(item) {
                 return '<div>' + item[0] + '</div>'
             }

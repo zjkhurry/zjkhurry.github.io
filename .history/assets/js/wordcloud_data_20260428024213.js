@@ -11,7 +11,7 @@ function initWordCloud() {
     function resizeContainer() {
         const width = container.parentElement.offsetWidth;
         container.style.height = (width * 0.5) + 'px';
-        // container.style.minHeight = '300px';
+        container.style.minHeight = '300px';
     }
 
     // 初始化时设置尺寸
@@ -32,7 +32,7 @@ function initWordCloud() {
             }
         }, 200); // 防抖，避免频繁重绘
     });
-    var wordCloudConfig = {
+    var wordCloud = new B2wordcloud(document.getElementById("word-cloud"), {
         list: [
             ['Wearable Electronics', 100],
             ['Sensors', 84],
@@ -57,7 +57,7 @@ function initWordCloud() {
         weightFactor: 10,
         effect: 'linerMap',
         tooltip: {
-            show: true,
+            show: false,
             formatter: function(item) {
                 return '<div>' + item[0] + '</div>'
             }
@@ -69,7 +69,7 @@ function initWordCloud() {
         ],
         autoFontSize: true,
         cursorWhenHover: 'pointer'
-    };
+    });
 
     // 初始化词云
     wordCloud = new B2wordcloud(container, wordCloudConfig);
