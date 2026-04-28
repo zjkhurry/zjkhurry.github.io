@@ -8,7 +8,7 @@ function initWordCloud() {
     const container = document.getElementById("word-cloud");
     if (!container) return;
 
-    lastWindowWidth = container.parentElement.offsetWidth;
+        
     // 设置容器高度为宽度的 50% (2:1 宽高比)
     function resizeContainer() {
         const width = container.parentElement.offsetWidth;
