@@ -129,78 +129,7 @@ KEYWORD_PATTERNS = {
         r"augmented.*reality",
         r"virtual.*reality",
     ],
-    # --- 新增类别 (基于 publications.md 分析) ---
-    "Wireless & Battery-free": [
-        r"wireless",
-        r"battery-free",
-        r"self-powered",
-        r"passive",
-    ],
-    "Sweat Analysis": [
-        r"sweat",
-        r"perspiration",
-    ],
-    "Implantable & Bioresorbable": [
-        r"implantable",
-        r"bioresorbable",
-        r"transient",
-        r"resorbable",
-    ],
-    "Human-Machine Interface": [
-        r"human-machine",
-        r"HMI",
-        r"interface",
-    ],
-    "Cardiovascular Health": [
-        r"cardiac",
-        r"heart",
-        r"pulse",
-        r"ECG",
-        r"electrocardiograph",
-        r"blood pressure",
-    ],
-    "Wound Care": [
-        r"wound",
-        r"healing",
-        r"bandage",
-    ],
-    "Drug Delivery": [
-        r"drug delivery",
-        r"therapy",
-        r"electrotherapy",
-        r"stimulation",
-    ],
-    "Optoelectronics": [
-        r"optoelectronic",
-        r"photonic",
-        r"light",
-        r"display",
-        r"electroluminescent",
-    ],
-    "Kirigami & Structural Design": [
-        r"kirigami",
-        r"structural",
-        r"mechanical",
-    ],
-    "Transparent Electronics": [
-        r"transparent",
-    ],
-    "IoT": [
-        r"IoT",
-        r"internet of things",
-    ],
-    "Respiratory Monitoring": [
-        r"respiratory",
-        r"breath",
-        r"lung",
-    ],
-    "Energy Storage": [
-        r"battery",
-        r"supercapacitor",
-        r"storage",
-    ],
 }
-
 
 
 def extract_keywords_from_publications():

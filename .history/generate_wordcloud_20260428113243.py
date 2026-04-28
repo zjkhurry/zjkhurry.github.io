@@ -129,78 +129,7 @@ KEYWORD_PATTERNS = {
         r"augmented.*reality",
         r"virtual.*reality",
     ],
-    # --- 新增类别 (基于 publications.md 分析) ---
-    "Wireless & Battery-free": [
-        r"wireless",
-        r"battery-free",
-        r"self-powered",
-        r"passive",
-    ],
-    "Sweat Analysis": [
-        r"sweat",
-        r"perspiration",
-    ],
-    "Implantable & Bioresorbable": [
-        r"implantable",
-        r"bioresorbable",
-        r"transient",
-        r"resorbable",
-    ],
-    "Human-Machine Interface": [
-        r"human-machine",
-        r"HMI",
-        r"interface",
-    ],
-    "Cardiovascular Health": [
-        r"cardiac",
-        r"heart",
-        r"pulse",
-        r"ECG",
-        r"electrocardiograph",
-        r"blood pressure",
-    ],
-    "Wound Care": [
-        r"wound",
-        r"healing",
-        r"bandage",
-    ],
-    "Drug Delivery": [
-        r"drug delivery",
-        r"therapy",
-        r"electrotherapy",
-        r"stimulation",
-    ],
-    "Optoelectronics": [
-        r"optoelectronic",
-        r"photonic",
-        r"light",
-        r"display",
-        r"electroluminescent",
-    ],
-    "Kirigami & Structural Design": [
-        r"kirigami",
-        r"structural",
-        r"mechanical",
-    ],
-    "Transparent Electronics": [
-        r"transparent",
-    ],
-    "IoT": [
-        r"IoT",
-        r"internet of things",
-    ],
-    "Respiratory Monitoring": [
-        r"respiratory",
-        r"breath",
-        r"lung",
-    ],
-    "Energy Storage": [
-        r"battery",
-        r"supercapacitor",
-        r"storage",
-    ],
 }
-
 
 
 def extract_keywords_from_publications():
@@ -272,46 +201,55 @@ def generate_js_file(word_data):
         f"['{item[0]}', {item[1]}]" for item in word_data
     )
 
-    # 注意：JS 代码中的所有花括号 { } 都必须转义为 {{ }}
+    # 注意：JS 对象中的花括号需要加倍 {{ }} 来转义
     js_content = f"""// Auto-generated Word Cloud Data from Publications
 // Run generate_wordcloud.py to update this file
 var wordCloud = null;
-var lastWindowWidth = 0;
+var lastContainerWidth = 0; // 记录上次容器的宽度
 
 // 动态调整词云尺寸
 function initWordCloud() {{
     const container = document.getElementById("word-cloud");
     if (!container) return;
 
-    lastWindowWidth = container.parentElement.offsetWidth;
     // 设置容器高度为宽度的 50% (2:1 宽高比)
     function resizeContainer() {{
         const width = container.parentElement.offsetWidth;
-        if (Math.abs(lastWindowWidth - width) < 50) return; // 如果宽度变化不大，避免频繁调整
-        lastWindowWidth = width;
+        
+        // 如果宽度没有显著变化，跳过重绘以优化移动端体验
+        // 移动端地址栏伸缩通常只改变高度，不改变宽度
+        if (Math.abs(width - lastContainerWidth) < 50) {{
+            container.style.height = (width * 0.5) + 'px';
+            return; 
+        }}
+        
+        lastContainerWidth = width;
         container.style.height = (width * 0.5) + 'px';
+        container.style.minHeight = '300px';
 
         // 重新初始化词云
         if (wordCloud) {{
             // 清空容器
             container.innerHTML = '';
-            // 重新创建词云
-            wordCloud = new B2wordcloud(container, wordCloudConfig);
         }}
+        // 创建新实例
+        wordCloud = new B2wordcloud(container, wordCloudConfig);
     }}
 
-    // 初始化时设置尺寸
+    // 初始化时设置尺寸并创建词云
     resizeContainer();
 
     // 窗口大小改变时调整
     let resizeTimer = null;
     window.addEventListener('resize', function() {{
         clearTimeout(resizeTimer);
+        // 增加防抖时间，移动端滚动时频繁触发，适当延长
         resizeTimer = setTimeout(function() {{
             resizeContainer();
-            
-        }}, 200); // 防抖，避免频繁重绘
+        }}, 300); 
     }});
+
+    // 定义词云配置
     var wordCloudConfig = {{
         list: [
             {word_list_str}
@@ -321,7 +259,7 @@ function initWordCloud() {{
         tooltip: {{
             show: true,
             formatter: function(item) {{
-                return '<div>' + item[0] + '</div>'
+                return '<div>' + item[0] + '</div>';
             }}
         }},
         color: [
@@ -330,11 +268,8 @@ function initWordCloud() {{
             ['#87CEFA', '#1E90FF'],  // 天蓝渐变
         ],
         autoFontSize: true,
-        cursorWhenHover: 'pointer'
+        cursorWhenHover: 'pointer',
     }};
-
-    // 初始化词云
-    wordCloud = new B2wordcloud(container, wordCloudConfig);
 }}
 
 // 页面加载完成后初始化

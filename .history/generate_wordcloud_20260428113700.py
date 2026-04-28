@@ -129,6 +129,7 @@ KEYWORD_PATTERNS = {
         r"augmented.*reality",
         r"virtual.*reality",
     ],
+
     # --- 新增类别 (基于 publications.md 分析) ---
     "Wireless & Battery-free": [
         r"wireless",
@@ -200,7 +201,7 @@ KEYWORD_PATTERNS = {
         r"storage",
     ],
 }
-
+}
 
 
 def extract_keywords_from_publications():

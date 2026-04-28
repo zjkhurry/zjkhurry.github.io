@@ -128,7 +128,131 @@ KEYWORD_PATTERNS = {
         r"vr.*ar",
         r"augmented.*reality",
         r"virtual.*reality",
+    ],KEYWORD_PATTERNS = {
+    # --- 原有核心类别 ---
+    "Wearable Electronics": [
+        r"wearable",
+        r"skin-interface",
+        r" electronic",
+        r"skin.*electronic",
+        r" electronic tattoo",
     ],
+    "Bioelectronics": [
+        r"bioelectronic",
+        r"bioelectronics",
+        r"bio-electronic",
+    ],
+    "Sensors": [
+        r"sens",
+        r"monitor",
+        r"measurement",
+    ],
+    "Health Monitoring": [
+        r"health",
+        r"monitoring",
+        r"patient",
+        r"diagnosis",
+    ],
+    "Skin-Interface": [
+        r"skin.*interface",
+        r"skin-adhesive",
+        r"skin-conformal",
+    ],
+    "Neuromorphic": [
+        r"neuromorphic",
+        r"neural",
+    ],
+    "Flexibility": [
+        r"flexible",
+        r"stretchable",
+        r"soft",
+    ],
+    "Energy Harvesting": [
+        r"energy harvest",
+        r"power generation",
+        r"nanogenerator",
+        r"TENG",
+        r"triboelectric",
+    ],
+    "Microfluidics": [
+        r"microfluidic",
+        r"fluid",
+    ],
+    "Thermal Regulation": [
+        r"thermal",
+        r"cooling",
+        r"heating",
+        r"thermoregulation",
+    ],
+    "Haptic Interfaces": [
+        r"haptic",
+        r"tactile",
+        r"feedback",
+    ],
+    "Neural Interfaces": [
+        r"neural.*interface",
+        r"brain.*computer",
+        r"brain activity",
+    ],
+    "Soft Robotics": [
+        r"soft.*robotic",
+        r"robotic",
+        r"actuator",
+    ],
+    "Biomedical Engineering": [
+        r"biomedical",
+        r"biological",
+    ],
+    "Material Science": [
+        r"material",
+        r"polymer",
+        r"nanomaterial",
+        r"hydrogel",
+        r"liquid metal",
+    ],
+    "Data Science": [
+        r"data",
+        r"signal",
+        r"processing",
+    ],
+    "Machine Learning": [
+        r"machine.*learn",
+        r"deep.*learn",
+        r"ai",
+        r"artificial.*intelligence",
+    ],
+    "Cancer Research": [
+        r"cancer",
+        r"oncology",
+    ],
+    "Neuroscience": [
+        r"neuroscience",
+        r"neurological",
+    ],
+    "Cell Biology": [
+        r"cell",
+        r"cellular",
+        r"intracellular",
+    ],
+    "Organ-on-Chip": [
+        r"organ.*chip",
+        r"organ.*on.*chip",
+    ],
+    "Nanotechnology": [
+        r"nano",
+        r"nanofabrication",
+    ],
+    "Flexible Electronics": [
+        r"flexible.*electronic",
+        r"soft.*electronic",
+    ],
+    "AR/VR": [
+        r"ar.*vr",
+        r"vr.*ar",
+        r"augmented.*reality",
+        r"virtual.*reality",
+    ],
+
     # --- 新增类别 (基于 publications.md 分析) ---
     "Wireless & Battery-free": [
         r"wireless",
@@ -200,7 +324,7 @@ KEYWORD_PATTERNS = {
         r"storage",
     ],
 }
-
+}
 
 
 def extract_keywords_from_publications():

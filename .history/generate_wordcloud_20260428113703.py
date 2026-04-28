@@ -200,7 +200,7 @@ KEYWORD_PATTERNS = {
         r"storage",
     ],
 }
-
+}
 
 
 def extract_keywords_from_publications():
