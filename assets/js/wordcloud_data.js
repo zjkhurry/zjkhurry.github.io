@@ -80,6 +80,8 @@ function initWordCloud() {
             '#00BFFF',
             '#1E90FF',
             ['#87CEFA', '#1E90FF'],  // 天蓝渐变
+            '#1E90FF',
+            ['#87CEFA', '#1E90FF'],  // 天蓝渐变
         ],
         autoFontSize: true,
         cursorWhenHover: 'pointer',
