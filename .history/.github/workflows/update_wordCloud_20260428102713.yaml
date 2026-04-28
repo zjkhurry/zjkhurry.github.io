@@ -1,0 +1,33 @@
+name: Update Word Cloud Data
+
+on: 
+ push:
+    branches: [main]
+    paths:
+      - 'pages/publications.md'        # 只有 pages 目录下的文件变更才触发
+    paths-ignore:
+      - 'assets/js/wordcloud_data.js'  # 忽略这个文件的变更
+ workflow_dispatch:  # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Reqs
+      run: |
+        sudo apt-get install python3-setuptools
+    - name: Run
+      run: |
+        python3 generate_wordcloud.py
+        git config --local user.name "${GITHUB_ACTOR}"
+        export remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+        git add assets/js/wordcloud_data.js
+        git commit -m "Updated Word Cloud Data"
+        git push "${remote_repo}" HEAD:${{ github.ref_name }}
+    # 自动提交并推送（超级方便！）
+    - name: 自动提交变更
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Updated Word Cloud Data"
+        skip_dirty_check: true
