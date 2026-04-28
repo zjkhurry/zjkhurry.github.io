@@ -3,74 +3,96 @@
 var wordCloud = null;
 var lastWindowWidth = 0;
 
-// 动态调整词云尺寸
 function initWordCloud() {
     const container = document.getElementById("word-cloud");
     if (!container) return;
 
     lastWindowWidth = container.parentElement.offsetWidth;
-    // 设置容器高度为宽度的 50% (2:1 宽高比)
+    
     function resizeContainer() {
         const width = container.parentElement.offsetWidth;
-        if (Math.abs(lastWindowWidth - width) < 50) return; // 如果宽度变化不大，避免频繁调整
+        if (Math.abs(lastWindowWidth - width) < 50) return;
         lastWindowWidth = width;
         container.style.height = (width * 0.5) + 'px';
 
-        // 重新初始化词云
         if (wordCloud) {
-            // 清空容器
             container.innerHTML = '';
-            // 重新创建词云
             wordCloud = new B2wordcloud(container, wordCloudConfig);
         }
     }
 
-    // 初始化时设置尺寸
     resizeContainer();
 
-    // 窗口大小改变时调整
     let resizeTimer = null;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
             resizeContainer();
-            
-        }, 200); // 防抖，避免频繁重绘
+        }, 200);
     });
+
     var wordCloudConfig = {
         list: [
-            ['Wearable Electronics', 100],
-        ['Sensors', 84],
-        ['Flexibility', 80],
-        ['Wireless & Battery-free', 72],
-        ['Health Monitoring', 52],
-        ['Energy Harvesting', 52],
-        ['Human-Machine Interface', 44],
-        ['Skin-Interface', 28],
-        ['Nanotechnology', 28],
-        ['Energy Storage', 28],
-        ['Sweat Analysis', 28],
-        ['Haptic Interfaces', 24],
-        ['Haptic Feedback', 24],
-        ['Machine Learning', 20],
-        ['Flexible Electronics', 20],
-        ['Thermal Regulation', 16],
-        ['Cell Biology', 16],
-        ['Kirigami & Structural Design', 16],
-        ['Implantable & Bioresorbable', 16],
-        ['Drug Delivery', 12],
-        ['Bioelectronics', 12],
-        ['Soft Robotics', 12],
-        ['Wound Care', 12],
-        ['Cardiovascular Health', 12],
-        ['Neuromorphic', 10],
-        ['Microfluidics', 10],
-        ['Respiratory Monitoring', 10],
-        ['Optoelectronics', 10],
-        ['Transparent Electronics', 10],
-        ['IoT', 10],
-        ['AR/VR', 10],
-        ['Biomedical Engineering', 10]
+            ['Wearable Electronics', 25],
+        ['Sensors', 21],
+        ['Flexibility', 20],
+        ['Wireless & Battery-free', 17],
+        ['Health Monitoring', 13],
+        ['Haptic Interfaces', 10],
+        ['Skin-Interface', 7],
+        ['Sweat Analysis', 7],
+        ['Machine Learning', 5],
+        ['Energy Harvesting', 5],
+        ['Thermal Regulation', 4],
+        ['Implantable & Bioresorbable', 4],
+        ['Bioelectronics', 3],
+        ['Soft Robotics', 3],
+        ['battery free', 3],
+        ['Neuromorphic', 2],
+        ['Wound Care', 2],
+        ['Microfluidics', 2],
+        ['Cardiovascular Health', 2],
+        ['AR/VR', 2],
+        ['virtual reality', 2],
+        ['skin electronics', 2],
+        ['tactile sensing', 2],
+        ['energy harvesting', 2],
+        ['human machine interfaces', 2],
+        ['skin electronic tattoo', 1],
+        ['flexible electronic integration', 1],
+        ['kirigami structured bioelectronic patch', 1],
+        ['precise intracellular delivery', 1],
+        ['organ conformal', 1],
+        ['neuromorphic robotic electronic skin', 1],
+        ['injury perception', 1],
+        ['active pain', 1],
+        ['risk management', 1],
+        ['prolonged monitoring', 1],
+        ['therapeutic electronic wound bandage', 1],
+        ['room temperature', 1],
+        ['plasmonic printing', 1],
+        ['internal organs', 1],
+        ['smart thermal regulation', 1],
+        ['healthcare monitoring', 1],
+        ['skin adhesive multimodal sensor', 1],
+        ['real time sweat monitoring', 1],
+        ['sweat powered', 1],
+        ['long term', 1],
+        ['mormyroidea inspired electronic skin', 1],
+        ['multi functional adhesive hydrogel', 1],
+        ['wireless transient pacemaker', 1],
+        ['bio interface', 1],
+        ['spinal implants', 1],
+        ['tissue adhering robotic interface', 1],
+        ['non invasive', 1],
+        ['chronic electrostimulation', 1],
+        ['user interactive displays', 1],
+        ['reliable pulse monitoring', 1],
+        ['cardiac function assessment', 1],
+        ['body conformable electronics', 1],
+        ['thermoregulation enabled', 1],
+        ['three dimensional liquid diode', 1],
+        ['integrated permeable electronics', 1]
         ],
         weightFactor: 10,
         effect: 'linerMap',
@@ -83,17 +105,15 @@ function initWordCloud() {
         color: [
             '#00BFFF',
             '#1E90FF',
-            ['#87CEFA', '#1E90FF'],  // 天蓝渐变
+            ['#87CEFA', '#1E90FF'],
         ],
         autoFontSize: true,
         cursorWhenHover: 'pointer'
     };
 
-    // 初始化词云
     wordCloud = new B2wordcloud(container, wordCloudConfig);
 }
 
-// 页面加载完成后初始化
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWordCloud);
 } else {

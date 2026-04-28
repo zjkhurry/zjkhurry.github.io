@@ -128,8 +128,8 @@ PUBLICATIONS_FILE = "_pages/publications.md"
 OUTPUT_FILE = "assets/js/wordcloud_data.js"
 
 # 初始化 RAKE 提取器
-# min_length=2, max_length=4 (增加长度以捕获更长的短语如 "closed-loop sensing system")
-rake_extractor = Rake(min_length=2, max_length=4)
+# min_length=2, max_length=5 (增加长度以捕获更长的短语如 "closed-loop sensing system")
+rake_extractor = Rake(min_length=2, max_length=5)
 
 def extract_manual_keywords(title):
     """根据手动定义的正则提取大类关键词"""
@@ -221,12 +221,14 @@ def generate_wordcloud_data():
         print("No keywords found in publications")
         return
 
+    max_count = max(keyword_counts.values()) if keyword_counts else 1
+
     # 获取前 60 个最高频的词/短语
     sorted_keywords = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)
     
     word_data = []
     for keyword, count in sorted_keywords[:60]: 
-        freq = count
+        freq = generate_frequency(count
         word_data.append([keyword, freq])
 
     js_content = generate_js_file(word_data)

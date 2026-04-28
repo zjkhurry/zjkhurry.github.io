@@ -17,7 +17,7 @@ jobs:
         sudo apt-get install python3-setuptools
     - name: Run
       run: |
-        pip3 install rake-nltk nltk
+      
         python3 generate_wordcloud.py
         
     # 自动提交并推送（超级方便！）
