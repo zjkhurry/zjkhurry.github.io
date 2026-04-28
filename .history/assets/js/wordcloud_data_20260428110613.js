@@ -15,12 +15,11 @@ function initWordCloud() {
         container.style.height = (width * 0.5) + 'px';
 
         // 重新初始化词云
-        if (wordCloud) {
-            // 清空容器
-            container.innerHTML = '';
-            // 重新创建词云
-            wordCloud = new B2wordcloud(container, wordCloudConfig);
-        }
+            if (wordCloud) {
+                // 清空容器
+                container.innerHTML = '';
+                // 重新创建词云
+                wordCloud = new B2wordcloud(container, wordCloudConfig);
     }
 
     // 初始化时设置尺寸
@@ -33,6 +32,7 @@ function initWordCloud() {
         resizeTimer = setTimeout(function() {
             resizeContainer();
             
+            }
         }, 200); // 防抖，避免频繁重绘
     });
     var wordCloudConfig = {

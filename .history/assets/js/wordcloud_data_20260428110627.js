@@ -20,7 +20,6 @@ function initWordCloud() {
             container.innerHTML = '';
             // 重新创建词云
             wordCloud = new B2wordcloud(container, wordCloudConfig);
-        }
     }
 
     // 初始化时设置尺寸
