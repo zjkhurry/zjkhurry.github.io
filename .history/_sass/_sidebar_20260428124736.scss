@@ -280,30 +280,3 @@
     display: none;
   }
 }
-/* Social Icons Hover Effects */
-.author__urls-wrapper {
-  .social-icons {
-    li {
-      a {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        &:hover {
-          animation: iconHover 1.5s ease-in-out infinite;
-          color: $primary-color;
-        }
-      }
-    }
-  }
-}
-
-/* Author Avatar Hover Effect */
-.author__avatar {
-  img {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    &:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-      transform: translateY(-8px) scale(1.05);
-    }
-  }
-}
