@@ -243,7 +243,7 @@ function initWordCloud() {{
         ],
         weightFactor: 10,
         effect: 'linerMap',
-        tooltip: {{
+        tooltip: {{}
             show: true,
             formatter: function(item) {{
                 return '<div>' + item[0] + '</div>'

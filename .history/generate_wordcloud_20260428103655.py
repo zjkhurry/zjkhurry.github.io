@@ -243,12 +243,12 @@ function initWordCloud() {{
         ],
         weightFactor: 10,
         effect: 'linerMap',
-        tooltip: {{
+        tooltip: {
             show: true,
-            formatter: function(item) {{
+            formatter: function(item) {
                 return '<div>' + item[0] + '</div>'
-            }}
-        }},
+            }
+        },
         color: [
             '#00BFFF',
             '#1E90FF',
