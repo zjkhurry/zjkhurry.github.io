@@ -225,7 +225,7 @@ def generate_wordcloud_data():
     sorted_keywords = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)
     
     word_data = []
-    for keyword, count in sorted_keywords[:100]: 
+    for keyword, count in sorted_keywords[:60]: 
         freq = count
         word_data.append([keyword, freq])
 

@@ -13,7 +13,7 @@ function initWordCloud() {
         const width = container.parentElement.offsetWidth;
         if (Math.abs(lastWindowWidth - width) < 50) return;
         lastWindowWidth = width;
-        container.style.height = (width * 0.75) + 'px';
+        container.style.height = (width * 0.5) + 'px';
 
         if (wordCloud) {
             container.innerHTML = '';
@@ -92,48 +92,9 @@ function initWordCloud() {
         ['body conformable electronics', 1],
         ['thermoregulation enabled', 1],
         ['three dimensional liquid diode', 1],
-        ['integrated permeable electronics', 1],
-        ['sweat monitoring', 1],
-        ['power activation', 1],
-        ['electricity driven soft swimmer', 1],
-        ['water quality', 1],
-        ['virus monitoring', 1],
-        ['skin conformable neuromorphic system', 1],
-        ['tactile sensory recognizing', 1],
-        ['respiratory pathogens monitoring', 1],
-        ['multifunctional integrated bioelectronics', 1],
-        ['severity evaluation', 1],
-        ['early sepsis diagnosis', 1],
-        ['immersive tactile feedback', 1],
-        ['electronic eyes', 1],
-        ['continuous wireless monitoring', 1],
-        ['artery blood pressure', 1],
-        ['wearable system', 1],
-        ['bioresorbable organic electrochemical transistors', 1],
-        ['transient spatiotemporal mapping', 1],
-        ['brain activity', 1],
-        ['wireless olfactory interface', 1],
-        ['radiative cooling interfaces', 1],
-        ['advanced thermal management', 1],
-        ['dual ions conducting hydrogel', 1],
-        ['intelligent biomedical applications', 1],
-        ['mechanoreceptor inspired electronic skin', 1],
-        ['scalable mechanical actuators', 1],
-        ['haptic reproducing electronic skin', 1],
-        ['wireless self sensing', 1],
-        ['touch iot enabled', 1],
-        ['potential heart attack', 1],
-        ['feedback functions', 1],
-        ['tactile information', 1],
-        ['transparent triboelectric nanogenerators based', 1],
-        ['ion conducting hydrogel', 1],
-        ['skin integrated', 1],
-        ['implantable electronic medicine enabled', 1],
-        ['wireless electrotherapy', 1],
-        ['drug delivery', 1],
-        ['bioresorbable microneedles', 1],
-        ['ultrathin biofuel cells enabled', 1]
+        ['integrated permeable electronics', 1]
         ],
+        weightFactor: 10,
         effect: 'linerMap',
         tooltip: {
             show: true,
@@ -147,7 +108,7 @@ function initWordCloud() {
             ['#87CEFA', '#1E90FF'],
         ],
         autoFontSize: true,
-        maskImage: 'images/mask.png',
+        mask: ''
         cursorWhenHover: 'pointer'
     };
 
