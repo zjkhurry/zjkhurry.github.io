@@ -12,7 +12,7 @@ function initWordCloud() {
     function resizeContainer() {
         const width = container.parentElement.offsetWidth;
         if (Math.abs(lastWindowWidth - width) < 5) return; // 如果宽度变化不大，避免频繁调整
-        lastWindowWidth = width;
+        
         container.style.height = (width * 0.5) + 'px';
 
         // 重新初始化词云
