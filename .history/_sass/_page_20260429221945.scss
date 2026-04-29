@@ -410,28 +410,3 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
-
-/* ==========================================================================
-   CENTER CONTENT WHEN SIDEBAR IS HIDDEN
-   ========================================================================== */
-
-// 现在 .no-sidebar 直接在 .page 上，选择器非常简单
-.page.no-sidebar {
-  @include breakpoint($large) {
-    // 占据全部 12 列
-    @include span(12 of 12 last);
-    @include prefix(0 of 12);
-    @include suffix(0 of 12);
-    
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  // 内部内容也可以适当限制最大阅读宽度，避免太宽难以阅读
-  .page__content {
-    max-width: 800px; // 例如 800px - 900px
-    margin-left: auto;
-    margin-right: auto;
-  }
-}

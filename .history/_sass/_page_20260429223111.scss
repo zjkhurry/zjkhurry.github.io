@@ -430,7 +430,7 @@
 
   // 内部内容也可以适当限制最大阅读宽度，避免太宽难以阅读
   .page__content {
-    max-width: 800px; // 例如 800px - 900px
+    max-width: $max-width; // 例如 800px - 900px
     margin-left: auto;
     margin-right: auto;
   }
