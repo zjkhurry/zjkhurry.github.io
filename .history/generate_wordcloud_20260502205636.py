@@ -257,7 +257,7 @@ function initWordCloud() {{
     const container = document.getElementById("word-cloud");
     if (!container) return;
     
-    function wordCloudConfig() {{
+    function wordCloudConfig {{
         return{{
             list: [
                 {word_list_str}
@@ -293,13 +293,12 @@ function initWordCloud() {{
         // 合并基础配置和动态计算的 minFontSize
         const currentConfig = Object.assign({{}}, wordCloudConfig(), {{
             minFontSize: dynamicMinFontSize
-        }});
+        });
 
         if (wordCloud) {{
             container.innerHTML = '';
+            wordCloud = new B2wordcloud(container, wordCloudConfig);
         }}
-
-        wordCloud = new B2wordcloud(container, currentConfig);
     }}
 
     resizeContainer();
@@ -312,6 +311,9 @@ function initWordCloud() {{
         }}, 200);
     }});
 
+    
+
+    wordCloud = new B2wordcloud(container, wordCloudConfig);
 }}
 
 if (document.readyState === 'loading') {{

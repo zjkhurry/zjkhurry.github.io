@@ -257,28 +257,27 @@ function initWordCloud() {{
     const container = document.getElementById("word-cloud");
     if (!container) return;
     
-    function wordCloudConfig() {{
+    function wordCloudConfig {{
         return{{
-            list: [
-                {word_list_str}
-            ],
-            effect: 'linerMap',
-            tooltip: {{
-                show: true,
-                formatter: function(item) {{
-                    return '<div>' + item[0] + '</div>'
-                }}
-            }},
-            color: [
-                '#00BFFF',
-                '#1E90FF',
-                ['#87CEFA', '#1E90FF'],
-            ],
-            autoFontSize: true,
-            maskImage: 'images/mask.png',
-            cursorWhenHover: 'pointer'
-        }};
-    }}
+        list: [
+            {word_list_str}
+        ],
+        effect: 'linerMap',
+        tooltip: {{
+            show: true,
+            formatter: function(item) {{
+                return '<div>' + item[0] + '</div>'
+            }}
+        }},
+        color: [
+            '#00BFFF',
+            '#1E90FF',
+            ['#87CEFA', '#1E90FF'],
+        ],
+        autoFontSize: true,
+        maskImage: 'images/mask.png',
+        cursorWhenHover: 'pointer'
+    }};
 
     function resizeContainer() {{
         const width = container.parentElement.offsetWidth;
@@ -286,20 +285,10 @@ function initWordCloud() {{
         lastWindowWidth = width;
         container.style.height = (width * 0.75) + 'px';
 
-        // 动态计算 minFontSize: width / 1000, 限制在 1 到 10 之间
-        let calculatedSize = Math.round(lastWindowWidth / 100);
-        const dynamicMinFontSize = Math.max(1, Math.min(10, calculatedSize));
-
-        // 合并基础配置和动态计算的 minFontSize
-        const currentConfig = Object.assign({{}}, wordCloudConfig(), {{
-            minFontSize: dynamicMinFontSize
-        }});
-
         if (wordCloud) {{
             container.innerHTML = '';
+            wordCloud = new B2wordcloud(container, wordCloudConfig);
         }}
-
-        wordCloud = new B2wordcloud(container, currentConfig);
     }}
 
     resizeContainer();
@@ -312,6 +301,9 @@ function initWordCloud() {{
         }}, 200);
     }});
 
+    
+
+    wordCloud = new B2wordcloud(container, wordCloudConfig);
 }}
 
 if (document.readyState === 'loading') {{

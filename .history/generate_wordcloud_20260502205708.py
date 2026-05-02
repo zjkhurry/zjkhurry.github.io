@@ -257,7 +257,7 @@ function initWordCloud() {{
     const container = document.getElementById("word-cloud");
     if (!container) return;
     
-    function wordCloudConfig() {{
+    function wordCloudConfig {{
         return{{
             list: [
                 {word_list_str}
@@ -312,6 +312,9 @@ function initWordCloud() {{
         }}, 200);
     }});
 
+    
+
+    wordCloud = new B2wordcloud(container, wordCloudConfig);
 }}
 
 if (document.readyState === 'loading') {{

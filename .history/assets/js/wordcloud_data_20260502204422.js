@@ -6,11 +6,12 @@ var lastWindowWidth = 0;
 function initWordCloud() {
     const container = document.getElementById("word-cloud");
     if (!container) return;
-    
-    function wordCloudConfig() {
-        return{
-            list: [
-                ['Wearable Electronics', 25],
+
+    lastWindowWidth = container.parentElement.offsetWidth;
+
+    var wordCloudConfig = {
+        list: [
+            ['Wearable Electronics', 25],
         ['Sensors', 21],
         ['Flexibility', 20],
         ['Wireless & Battery-free', 17],
@@ -110,25 +111,25 @@ function initWordCloud() {
         ['drug delivery', 1],
         ['bioresorbable microneedles', 1],
         ['ultrathin biofuel cells enabled', 1]
-            ],
-            effect: 'linerMap',
-            tooltip: {
-                show: true,
-                formatter: function(item) {
-                    return '<div>' + item[0] + '</div>'
-                }
-            },
-            color: [
-                '#00BFFF',
-                '#1E90FF',
-                ['#87CEFA', '#1E90FF'],
-            ],
-            autoFontSize: true,
-            maskImage: 'images/mask.png',
-            cursorWhenHover: 'pointer'
-        };
-    }
+        ],
+        effect: 'linerMap',
+        tooltip: {
+            show: true,
+            formatter: function(item) {
+                return '<div>' + item[0] + '</div>'
+            }
+        },
+        color: [
+            '#00BFFF',
+            '#1E90FF',
+            ['#87CEFA', '#1E90FF'],
+        ],
+        autoFontSize: true,
+        maskImage: 'images/mask.png',
+        cursorWhenHover: 'pointer'
+    };
 
+    
     function resizeContainer() {
         const width = container.parentElement.offsetWidth;
         if (Math.abs(lastWindowWidth - width) < 50) return;
@@ -136,19 +137,18 @@ function initWordCloud() {
         container.style.height = (width * 0.75) + 'px';
 
         // 动态计算 minFontSize: width / 1000, 限制在 1 到 10 之间
-        let calculatedSize = Math.round(lastWindowWidth / 100);
+        let calculatedSize = lastWindowWidth / 1000;
         const dynamicMinFontSize = Math.max(1, Math.min(10, calculatedSize));
 
         // 合并基础配置和动态计算的 minFontSize
-        const currentConfig = Object.assign({}, wordCloudConfig(), {
+        const currentConfig = Object.assign({}, getBaseConfig(), {
             minFontSize: dynamicMinFontSize
         });
 
         if (wordCloud) {
             container.innerHTML = '';
+            wordCloud = new B2wordcloud(container, currentConfig);
         }
-
-        wordCloud = new B2wordcloud(container, currentConfig);
     }
 
     resizeContainer();
@@ -160,7 +160,6 @@ function initWordCloud() {
             resizeContainer();
         }, 200);
     });
-
 }
 
 if (document.readyState === 'loading') {
