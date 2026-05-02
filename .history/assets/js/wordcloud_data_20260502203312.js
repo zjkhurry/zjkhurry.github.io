@@ -147,7 +147,7 @@ function initWordCloud() {
             ['#87CEFA', '#1E90FF'],
         ],
         autoFontSize: true,
-        minFontSize: lastWindowWidth > 500? 10 : 1,
+        minFontSize: 12,
         maskImage: 'images/mask.png',
         cursorWhenHover: 'pointer'
     };
