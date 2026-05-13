@@ -29,10 +29,17 @@ Dr. Jingkun Zhou is a PostDoc fellow at Department of Biomedical Engineering, Ci
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-
-- *2026.05*: &nbsp;🎉🎉  ![conference]({{ '/images/9thNCCEB.jpg' | relative_url }}){: width="200px" style="float:right; margin-left:20px; margin-bottom: 10px; display: block;"} Jingkun Zhou gave an invited talk at the 9th National Conference on Chemical Engineering and Biotechnology in 2026. 
-
+<div class='paper-box'>
+<div class='paper-box-text' markdown="1">
+- *2026.05*: &nbsp;🎉🎉  Jingkun Zhou gave an invited talk at the 9th National Conference on Chemical Engineering and Biotechnology in 2026. 
+</div>
+<div class='paper-box-image'><div><div class="badge">9thNCCEB</div><img src='/images/9thNCCEB.JPG' alt="sym" width="50%"></div></div>
+</div>
+<div class='paper-box'>
+<div class='paper-box-text' markdown="1">
 - *2026.03*: &nbsp;🎉🎉  Jingkun Zhou and Yuqiong Wang were interviewed by China News regarding the ***Cell*** paper titled "An organ-conformal, kirigami-structured bioelectronic patch for precise intracellular delivery." [Video](https://m.chinanews.com/wap/detail/chs/sp/10594922.shtml?params=eyJwbGF5TW9kZSI6InZlcnRpY2FsIn0=)
+</div>
+</div>
 
 
 
