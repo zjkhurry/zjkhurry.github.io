@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://zjkhurry.github.io/sitemap.xml
