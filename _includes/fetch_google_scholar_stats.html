@@ -1,19 +1,56 @@
 <script>
-    $(document).ready(function () {
-        {% if site.google_scholar_stats_use_cdn %}
-        var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@'
-        {% else %}
-        var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/'
-        {% endif %}
-        $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
-            var totalCitation = data['citedby']
-            document.getElementById('total_cit').innerHTML = totalCitation;
-            var citationEles = document.getElementsByClassName('show_paper_citations')
-            Array.prototype.forEach.call(citationEles, element => {
-                var paperId = element.getAttribute('data')
-                var numCitations = data['publications'][paperId]['num_citations']
-                element.innerHTML = '| Citations: ' + numCitations;
-            });
+$(document).ready(function () {
+    {% if site.google_scholar_stats_use_cdn %}
+    var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@'
+    {% else %}
+    var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/'
+    {% endif %}
+
+    $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
+        // 1) Update total citation count badge
+        var totalCitEl = document.getElementById('total_cit');
+        if (totalCitEl) totalCitEl.innerHTML = data['citedby'];
+
+        // 2) Build a lookup: normalized title -> num_citations
+        var citeMap = {};
+        $.each(data['publications'], function (pubId, pub) {
+            var title = (pub['bib']['title'] || '').trim().toLowerCase();
+            // normalize: remove special chars, extra spaces
+            title = title.replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+            citeMap[title] = pub['num_citations'];
+        });
+
+        // 3) For each paper span, match by data-title and insert citation badge
+        $('.paper-cite').each(function () {
+            var $span = $(this);
+            var rawTitle = ($span.data('title') || '').trim().toLowerCase();
+            var normTitle = rawTitle.replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+
+            // Try exact normalized match first
+            var num = citeMap[normTitle];
+
+            // If not found, try fuzzy: check if any key contains this title or vice versa
+            if (num === undefined) {
+                $.each(citeMap, function (key, val) {
+                    if (key.indexOf(normTitle) !== -1 || normTitle.indexOf(key) !== -1) {
+                        num = val;
+                        return false; // break
+                    }
+                });
+            }
+
+            if (num !== undefined && num > 0) {
+                var badge = ' <span class="citation-badge" style="background:#e8f4fd;color:#1a73e8;font-size:0.82em;padding:2px 8px;border-radius:12px;white-space:nowrap;font-weight:500;">' + num + ' citations</span>';
+                $span.html(badge);
+            } else if (num !== undefined && num === 0) {
+                $span.html(' <span class="citation-badge" style="background:#f5f5f5;color:#999;font-size:0.82em;padding:2px 8px;border-radius:12px;white-space:nowrap;">0</span>');
+            }
+            // If not found at all, leave span empty (no badge shown)
         });
     })
+    .fail(function () {
+        // Silently fail — static content remains visible
+        console.warn('Google Scholar data load failed');
+    });
+});
 </script>
