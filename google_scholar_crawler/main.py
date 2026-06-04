@@ -17,8 +17,6 @@ if 'repeat' in sig.parameters:
         return _original_get_proxy_list(self, *args, **kwargs)
     FreeProxy.get_proxy_list = _patched_get_proxy_list
 
-# 然后再执行原有的 scholarly 逻辑
-scholarly.use_proxy(pg)
 
 # Setup proxy
 pg = ProxyGenerator()
