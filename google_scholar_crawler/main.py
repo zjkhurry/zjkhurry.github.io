@@ -4,6 +4,22 @@ import json
 from datetime import datetime
 import os
 
+# main.py 顶部添加
+from fp.fp import FreeProxy
+import inspect
+
+# 检查 get_proxy_list 是否需要 repeat 参数但 scholarly 没传
+sig = inspect.signature(FreeProxy.get_proxy_list)
+if 'repeat' in sig.parameters:
+    _original_get_proxy_list = FreeProxy.get_proxy_list
+    def _patched_get_proxy_list(self, *args, **kwargs):
+        kwargs.setdefault('repeat', True)
+        return _original_get_proxy_list(self, *args, **kwargs)
+    FreeProxy.get_proxy_list = _patched_get_proxy_list
+
+# 然后再执行原有的 scholarly 逻辑
+scholarly.use_proxy(pg)
+
 # Setup proxy
 pg = ProxyGenerator()
 pg.FreeProxies()  # Use free rotating proxies
