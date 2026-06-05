@@ -8,8 +8,14 @@ $(document).ready(function () {
 
     $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
         // 1) Update total citation count badge
-        var totalCitEl = document.getElementById('total_cit');
-        if (totalCitEl) totalCitEl.innerHTML = data['citedby'];
+        var totalCitation = data['citedby']
+        document.getElementById('total_cit').innerHTML = totalCitation;
+        var citationEles = document.getElementsByClassName('show_paper_citations')
+        Array.prototype.forEach.call(citationEles, element => {
+            var paperId = element.getAttribute('data')
+            var numCitations = data['publications'][paperId]['num_citations']
+            element.innerHTML = '| Citations: ' + numCitations;
+        });
 
         // 2) Build a lookup: normalized title -> num_citations
         var citeMap = {};
