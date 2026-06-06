@@ -1,23 +1,31 @@
 <script>
 $(document).ready(function () {
     {% if site.google_scholar_stats_use_cdn %}
-    var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@'
+    var gsDataBaseUrl = 'https://cdn.jsdelivr.net/gh/{{ site.repository }}@google-scholar-stats/'
     {% else %}
-    var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/'
+    var gsDataBaseUrl = 'https://raw.githubusercontent.com/{{ site.repository }}/master/'
     {% endif %}
 
-    $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json", function (data) {
-        // 1) Update total citation count badge
-        var totalCitation = data['citedby']
-        document.getElementById('total_cit').innerHTML = totalCitation;
-        var citationEles = document.getElementsByClassName('show_paper_citations')
-        Array.prototype.forEach.call(citationEles, element => {
-            var paperId = element.getAttribute('data')
-            var numCitations = data['publications'][paperId]['num_citations']
-            element.innerHTML = '| Citations: ' + numCitations;
+    $.getJSON(gsDataBaseUrl + "google-scholar-stats/gs_data.json")
+    .done(function (data) {
+        // 1) Update total citation count badge (only on pages with the element)
+        var totalCitation = data['citedby'];
+        var totalCitEl = document.getElementById('total_cit');
+        if (totalCitEl) {
+            totalCitEl.innerHTML = totalCitation;
+        }
+
+        // 2) Update papers with direct ID (for show_paper_citations class)
+        var citationEles = document.getElementsByClassName('show_paper_citations');
+        Array.prototype.forEach.call(citationEles, function(element) {
+            var paperId = element.getAttribute('data');
+            var pubData = data['publications'][paperId];
+            if (pubData && pubData['num_citations'] !== undefined) {
+                element.innerHTML = '| Citations: ' + pubData['num_citations'];
+            }
         });
 
-        // 2) Build a lookup: normalized title -> num_citations
+        // 3) Build a lookup: normalized title -> num_citations
         var citeMap = {};
         $.each(data['publications'], function (pubId, pub) {
             var title = (pub['bib']['title'] || '').trim().toLowerCase();
@@ -26,7 +34,7 @@ $(document).ready(function () {
             citeMap[title] = pub['num_citations'];
         });
 
-        // 3) For each paper span, match by data-title and insert citation badge
+        // 4) For each paper span, match by data-title and insert citation badge
         $('.paper-cite').each(function () {
             var $span = $(this);
             var rawTitle = ($span.data('title') || '').trim().toLowerCase();
@@ -54,9 +62,9 @@ $(document).ready(function () {
             // If not found at all, leave span empty (no badge shown)
         });
     })
-    .fail(function () {
-        // Silently fail — static content remains visible
-        console.warn('Google Scholar data load failed');
+    .fail(function (jqxhr, textStatus, err) {
+        // Silently fail - static content remains visible
+        console.warn('Google Scholar data load failed:', textStatus, err);
     });
 });
 </script>
