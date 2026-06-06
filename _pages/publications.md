@@ -24,7 +24,7 @@ Chow, L., Zhang, J., Peng, Z., Ye, D., Zhang, B., Li, J., Park, W., Du, C., Huan
 Wang, Y., Du, L., Wu, H., Li, H., Liu, J., Hu, Y., Jiang, X., Yin, D., Hao, Y., Xiao, A., Yang, Y., **Zhou, J.**, Lin, L., Chen, F., Ye, D., He, Y., Zhao, Z., Liu, B., Yao, K., Wang, X., Chen, X., Tong, Y., Yao, F., Yang, K., Sun, H., Fu, Y., Wang, S., Huang, Z., Chen, X., Guo, H., Kong, S., Yang, S., Song, W., Ershad, F., Wang, Y., Zhang, L., Zhang, Q., Wu, H., Li, N., Rao, W., Li, J., Yang, L., Chen, X., Mu, W., Yu, X.\*, Fan, Y.\*, Yu, C.\*, Xu, Y.\*, & Chang, L.\*. (02/2026). An organ-conformal, kirigami-structured bioelectronic patch for precise intracellular delivery. ***Cell***, 189(4), 1086–1107.e32. [LINK](https://doi.org/10.1016/j.cell.2025.12.021) <span class="paper-cite" data-title="An organ-conformal, kirigami-structured bioelectronic patch for precise intracellular delivery"></span>
 
 &nbsp;
-
+ 
 </details>
 
 <br/>
