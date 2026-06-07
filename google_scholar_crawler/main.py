@@ -20,7 +20,8 @@ if 'repeat' in sig.parameters:
 
 # Setup proxy
 pg = ProxyGenerator()
-pg.FreeProxies()  # Use free rotating proxies
+# pg.FreeProxies()  # Use free rotating proxies
+pg.SerpAPI(os.environ['SERPAPI_KEY'])
 scholarly.use_proxy(pg)
 
 author: dict = scholarly.search_author_id(os.environ['GOOGLE_SCHOLAR_ID'])
