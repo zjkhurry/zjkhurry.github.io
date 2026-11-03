@@ -8,6 +8,8 @@ redirect_from:
 ---
 
 # 📝 Publications 
+<div class="pubs-container">
+<div class="pubs-text">
 <details open markdown="1">
 <summary style="font-size: 1.2em; font-weight: bold; color: #3d8ed5;">  2026 </summary>
 
@@ -319,3 +321,11 @@ Li, Y., Qian, K.\*, Tao Huang, & **Zhou, J.** (2018). Depth estimation from mono
 &nbsp;
 
 </details>
+</div>
+<div class="pubs-images">
+<div class="pubs-cover-placeholder"><img src="/images/papers/Nature.png"></div>
+<div class="pubs-cover-placeholder"><img src="/images/papers/NSFC.png"></div>
+<div class="pubs-cover-placeholder"><img src="/images/papers/NE.jpeg"></div>
+<div class="pubs-cover-placeholder"><img src="/images/papers/NMI.png"></div>
+</div>
+</div>

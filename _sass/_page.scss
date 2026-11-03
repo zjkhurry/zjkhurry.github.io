@@ -4,7 +4,8 @@
 
 #main {
   @include container;
-  @include clearfix;
+  /* @include clearfix; */ // 1. 注释掉或删掉这一行
+  overflow: visible;        // 2. ✨ 新增这一行，强制确保滚动流不被截断
   margin-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
@@ -67,11 +68,27 @@
   }
 
   p, li, dl {
-    font-size: 1em;
+    font-size: $type-size-4;
+      line-height: 2;
   }
 
-  /* paragraph indents */
-  p {
+  .research-image-row {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1.5em 0;
+  }
+
+    .research-image-row img {
+    width: auto;
+    max-width: 45%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+
+    p {
     margin: 0 0 $indent-var;
 
     /* sibling indentation*/
@@ -115,6 +132,68 @@
   blockquote + .small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
+  }
+}
+
+.pubs-container {
+  display: flex;             // 改为 flex 布局，对 sticky 兼容性更强、更稳定
+  align-items: flex-start;   // 核心：强制两侧顶部对齐，彻底释放滚动空间
+  gap: 2em;
+  width: 100%;
+}
+
+.pubs-text {
+  width: 75%;                // 精确分配左侧 75%
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.pubs-images {
+  width: 25%;                // 精确分配右侧 25%
+  flex-shrink: 0;
+  
+  // 核心粘性属性
+  position: -webkit-sticky;  // 兼容老版本 Safari
+  position: sticky;
+  
+  // ✨ 【关键改动】：改用顶部吸附计算
+  // 因为右侧内容比屏幕高，下滑时如果我们用 top: calc(100vh - 100% - 20px) 这样的动态负向计算，
+  // 能够欺骗浏览器，让它在右侧“刚好看完/到底”的时候完美卡死吸附。
+  top: calc(100vh - 100% - 250px); 
+  
+  // 兜底保障属性
+  height: fit-content !important; // 强制解除任何可能的高度拉伸
+  align-self: flex-start;         // 再次确保不被伸展
+}
+
+.pubs-cover-placeholder {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  background: #eee;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pubs-cover-placeholder img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 响应式断点 */
+@media (max-width: 900px) {
+  .pubs-container {
+    flex-direction: column;  // 手机端变为上下堆叠
+    gap: 1.5em;
+  }
+  .pubs-text, .pubs-images {
+    width: 100%;             // 手机端撑满
+    position: static;        // 手机端取消固定
   }
 }
 
